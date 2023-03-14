@@ -5,6 +5,7 @@ import Youtube from './youtube.svg'
 import Linkedin from './linkedin.svg'
 import Twitter from './twitter.svg'
 import Heart from './heart.svg'
+import RSS from './rss.svg'
 
 // Icons taken from: https://simpleicons.org/
 
@@ -16,6 +17,7 @@ const components = {
   linkedin: Linkedin,
   twitter: Twitter,
   heart: Heart,
+  rss: RSS,
 }
 
 const Icon = ({ kind, href, iconClass, size = 8 }) => {

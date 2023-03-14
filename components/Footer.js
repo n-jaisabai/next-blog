@@ -12,6 +12,7 @@ export default function Footer() {
           <Icon kind="facebook" href={siteMetadata.facebook} size="6" />
           <Icon kind="linkedin" href={siteMetadata.linkedin} size="6" />
           <Icon kind="twitter" href={siteMetadata.twitter} size="6" />
+          <Icon kind="rss" href={siteMetadata.rss} size="6" />
         </div>
         <div className="mt-4 flex space-x-2 text-sm text-gray-500 dark:text-gray-400">
           <div>{`© ${new Date().getFullYear()}`}</div>
