@@ -29,10 +29,10 @@ export default function Tags({ tags }) {
               <Link
                 href={`/tags/${kebabCase(t)}`}
                 key={t}
-                className="bg-day dark:bg-night relative mt-2 mb-2 mr-5 inline-flex flex-row items-center rounded border border-gray-700 bg-opacity-50 font-medium hover:border-white dark:bg-opacity-50"
+                className="group dark:bg-night relative mt-2 mb-2 mr-5 inline-flex flex-row items-center rounded border border-gray-400 font-medium hover:border-gray-800 dark:border-gray-700 dark:hover:border-gray-600"
               >
                 <div className="px-2 py-1 text-sm font-medium">{t.split(' ').join('-')}</div>
-                <div className="inline-flex h-full items-center rounded-r border-l border-gray-700 bg-gray-300 px-2 text-sm font-semibold dark:bg-gray-800">
+                <div className="inline-flex h-full items-center rounded-r bg-gray-400 px-2 text-sm font-medium text-white group-hover:bg-gray-700 dark:bg-gray-800 dark:group-hover:bg-gray-600">
                   {`${tags[t]}`}
                 </div>
               </Link>
