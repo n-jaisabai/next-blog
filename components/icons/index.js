@@ -4,6 +4,7 @@ import Facebook from './facebook.svg'
 import Youtube from './youtube.svg'
 import Linkedin from './linkedin.svg'
 import Twitter from './twitter.svg'
+import Heart from './heart.svg'
 
 // Icons taken from: https://simpleicons.org/
 
@@ -14,13 +15,15 @@ const components = {
   youtube: Youtube,
   linkedin: Linkedin,
   twitter: Twitter,
+  heart: Heart,
 }
 
-const Icon = ({ kind, href, size = 8 }) => {
-  if (!href || (kind === 'mail' && !/^mailto:\w+([.-]?\w+)@\w+([.-]?\w+)(.\w{2,3})+$/.test(href)))
-    return null
+const Icon = ({ kind, href, iconClass, size = 8 }) => {
+  if (kind === 'mail' && !/^mailto:\w+([.-]?\w+)@\w+([.-]?\w+)(.\w{2,3})+$/.test(href)) return null
 
   const Svg = components[kind]
+
+  if (!iconClass) iconClass = `fill-current text-gray-700 dark:text-gray-200`
 
   return (
     <a
@@ -30,9 +33,7 @@ const Icon = ({ kind, href, size = 8 }) => {
       href={href}
     >
       <span className="sr-only">{kind}</span>
-      <Svg
-        className={`fill-current text-gray-700 hover:text-blue-500 dark:text-gray-200 dark:hover:text-blue-400 h-${size} w-${size}`}
-      />
+      <Svg className={`${iconClass} h-${size} w-${size}`} />
     </a>
   )
 }
