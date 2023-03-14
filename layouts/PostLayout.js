@@ -14,10 +14,10 @@ const discussUrl = (slug) =>
     `${siteMetadata.siteUrl}/blog/${slug}`
   )}`
 
-const postDateTemplate = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }
+const postDateTemplate = { year: 'numeric', month: 'long', day: 'numeric' }
 
 export default function PostLayout({ frontMatter, authorDetails, next, prev, children }) {
-  const { slug, fileName, date, title, images, tags } = frontMatter
+  const { slug, fileName, date, title, images, tags, readingTime } = frontMatter
 
   return (
     <SectionContainer>
@@ -28,21 +28,40 @@ export default function PostLayout({ frontMatter, authorDetails, next, prev, chi
       />
       <ScrollTopAndComment />
       <article>
+        <div className="pt-4 xl:pt-8">
+          <Link
+            href="/blog"
+            className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
+          >
+            &larr; Back to the blog
+          </Link>
+        </div>
         <div className="xl:divide-y xl:divide-gray-200 xl:dark:divide-gray-700">
           <header className="pt-6 xl:pb-6">
-            <div className="space-y-1 text-center">
-              <dl className="space-y-10">
-                <div>
-                  <dt className="sr-only">Published on</dt>
-                  <dd className="text-base font-medium leading-6 text-gray-500 dark:text-gray-400">
-                    <time dateTime={date}>
-                      {new Date(date).toLocaleDateString(siteMetadata.locale, postDateTemplate)}
-                    </time>
-                  </dd>
-                </div>
-              </dl>
+            <div className="space-y-1">
               <div>
                 <PageTitle>{title}</PageTitle>
+              </div>
+              <div className="flex w-full flex-wrap place-content-between items-center gap-4 pt-2 xl:pt-4">
+                {tags && (
+                  <div className="flex flex-wrap gap-2">
+                    {tags.map((tag) => (
+                      <Tag key={tag} text={tag} />
+                    ))}
+                  </div>
+                )}
+                <dl className="relative ml-auto text-right">
+                  <div className="flex flex-row items-center gap-2 text-sm font-semibold text-gray-700 dark:text-gray-300">
+                    <dt className="sr-only">Published on</dt>
+                    <dd>
+                      <time dateTime={date}>
+                        {new Date(date).toLocaleDateString(siteMetadata.locale, postDateTemplate)}
+                      </time>
+                    </dd>
+                    <span>•</span>
+                    <div>{readingTime.text}</div>
+                  </div>
+                </dl>
               </div>
             </div>
           </header>
@@ -98,18 +117,6 @@ export default function PostLayout({ frontMatter, authorDetails, next, prev, chi
             </div>
             <footer>
               <div className="divide-gray-200 text-sm font-medium leading-5 dark:divide-gray-700 xl:col-start-1 xl:row-start-2 xl:divide-y">
-                {tags && (
-                  <div className="py-4 xl:py-8">
-                    <h2 className="text-xs uppercase tracking-wide text-gray-500 dark:text-gray-400">
-                      Tags
-                    </h2>
-                    <div className="flex flex-wrap">
-                      {tags.map((tag) => (
-                        <Tag key={tag} text={tag} />
-                      ))}
-                    </div>
-                  </div>
-                )}
                 {(next || prev) && (
                   <div className="flex justify-between py-4 xl:block xl:space-y-8 xl:py-8">
                     {prev && (
@@ -134,14 +141,6 @@ export default function PostLayout({ frontMatter, authorDetails, next, prev, chi
                     )}
                   </div>
                 )}
-              </div>
-              <div className="pt-4 xl:pt-8">
-                <Link
-                  href="/blog"
-                  className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
-                >
-                  &larr; Back to the blog
-                </Link>
               </div>
             </footer>
           </div>
