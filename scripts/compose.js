@@ -103,7 +103,7 @@ inquirer
     // Remove special characters and replace space with -
     const fileName = answers.title
       .toLowerCase()
-      .replace(/[^a-zA-Z0-9 ]/g, '')
+      .replace(/[^\u0E00-\u0E7Fa-zA-Z0-9 ]/g, '')
       .replace(/ /g, '-')
       .replace(/-+/g, '-')
     const frontMatter = genFrontMatter(answers)
