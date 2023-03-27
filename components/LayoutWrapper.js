@@ -6,6 +6,7 @@ import SectionContainer from './SectionContainer'
 import Footer from './Footer'
 import MobileNav from './MobileNav'
 import ThemeSwitch from './ThemeSwitch'
+import Image from 'next/image'
 
 const LayoutWrapper = ({ children }) => {
   return (
@@ -16,10 +17,8 @@ const LayoutWrapper = ({ children }) => {
             <Link href="/" aria-label={siteMetadata.headerTitle}>
               <div className="flex items-center justify-between">
                 <div className="inline-flex h-6 items-center text-center text-xl font-semibold transition-transform duration-500 hover:scale-110">
-                  <div className="rounded-lg bg-gradient-to-tr from-blue-400 to-blue-800 py-0.5 px-1 text-white">
-                    NJ
-                  </div>
-                  <div className="ml-1">VERSE</div>
+                  <Image src="/logo.svg" width={32} height={32} alt="njverse" />
+                  <div className="ml-1">NJVERSE</div>
                 </div>
               </div>
             </Link>
