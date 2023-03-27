@@ -17,7 +17,7 @@ const LayoutWrapper = ({ children }) => {
             <Link href="/" aria-label={siteMetadata.headerTitle}>
               <div className="flex items-center justify-between">
                 <div className="inline-flex h-6 items-center text-center text-xl font-semibold transition-transform duration-500 hover:scale-110">
-                  <Image src="/logo.svg" width={32} height={32} alt="njverse" />
+                  <Image src="/static/images/logo.svg" width={32} height={32} alt="njverse" />
                   <div className="ml-1">NJVERSE</div>
                 </div>
               </div>
