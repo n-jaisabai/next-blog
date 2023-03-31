@@ -2,7 +2,7 @@ import siteMetadata from '@/data/siteMetadata'
 import headerNavLinks from '@/data/headerNavLinks'
 import Logo from '@/data/logo.svg'
 import Link from './Link'
-import SectionContainer from './SectionContainer'
+import { SectionHeader, SectionContainer } from './SectionContainer'
 import Footer from './Footer'
 import MobileNav from './MobileNav'
 import ThemeSwitch from './ThemeSwitch'
@@ -12,7 +12,7 @@ const LayoutWrapper = ({ children }) => {
   return (
     <>
       <header className="supports-backdrop-blur:bg-white/60 sticky top-0 z-40 py-2 backdrop-blur sm:py-4">
-        <SectionContainer>
+        <SectionHeader>
           <div className="flex items-center justify-between">
             <Link href="/" aria-label={siteMetadata.headerTitle}>
               <div className="flex items-center justify-between">
@@ -38,7 +38,7 @@ const LayoutWrapper = ({ children }) => {
               <MobileNav />
             </div>
           </div>
-        </SectionContainer>
+        </SectionHeader>
       </header>
       <SectionContainer>
         <main className="mb-auto">{children}</main>
